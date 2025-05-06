@@ -1,0 +1,12 @@
+FROM python:3.12-slim
+
+RUN apt-get update && apt-get install -y wget \
+    && wget -xO /home/mongo-tools.deb https://fastdl.mongodb.org/tools/db/mongodb-database-tools-debian12-x86_64-100.11.0.deb \
+    && apt install -y /home/mongo-tools.deb 
+
+WORKDIR /app
+
+COPY oplog-backup/ /app
+RUN pip3 install --no-cache-dir google-cloud-storage==3.0.0
+
+CMD ["python3", "oplog_backup.py"]

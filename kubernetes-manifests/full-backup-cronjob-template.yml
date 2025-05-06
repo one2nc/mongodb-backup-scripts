@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: full-backup-cronjob
+spec:
+  schedule: "30 18 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: backup-job
+              image: <IMAGE_URI>
+              env:
+                - name: MONGO_URI
+                  value: <MONGO_CONNECTION_STRING>
+                - name: BUCKET_NAME
+                  value: <GCS_BUCKET_NAME>
+                - name: ENV
+                  value: <ENV_NAME>
+                - name: APP_NAME
+                  value: <APP_NAME>
+              resources:
+                requests:
+                  cpu: 500m
+                  memory: 1Gi
+                  ephemeral-storage: 5Gi
+                limits:
+                  cpu: 2000m
+                  memory: 4Gi
+                  ephemeral-storage: 10Gi
