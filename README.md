@@ -63,7 +63,7 @@ We have implemented automated MongoDB Oplog Backups using a Python script that r
 - Oplogs are backed up using the `mongodump` (version 100.11.0) utility and stored in a GCS bucket in BSON format.
 - Backup file path format: `/<ENV>/YYYY/MM/DD/HH/MM/oplog.bson`.
 - **Script Details** :
-  - _Script Path_: `mongo-backup-scripts/oplog-backup/oplog-backup.py`
+  - _Script Path_: `oplog-backup/oplog-backup.py`
   - _Environment Variables_ :
     - **MONGO_URI** (string) : MongoDB Connection String
     - **BUCKET_NAME** (string) : GCS Bucket Name
