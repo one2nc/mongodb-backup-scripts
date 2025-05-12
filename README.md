@@ -1,6 +1,21 @@
+# MongoDB Backup, Restore & Validation Toolkit
+
+This repository contains a comprehensive set of scripts to manage MongoDB **backups**, **restorations**, and **post-backup validations**. It supports both **full database dumps** and **oplog backups** for point-in-time recovery (PITR), along with a script to inspect and validate database metadata.
+
+The backup and restore operations are containerized and can be automated using **Kubernetes CronJobs**, making them production-ready for scheduled operations in cloud-native environments. All backup data is stored in **Google Cloud Storage (GCS)**.
+
+## Table of Contents
+
+1. [MongoDB Database & Collection Metadata Script](#mongodb-database--collection-metadata-script)
+2. [MongoDB Full Load Backup](#mongodb-full-load-backup)
+3. [MongoDB Oplog Backup](#mongodb-oplog-backup)
+4. [MongoDB Restore Script](#mongodb-restore-script)
+
+
+
 ## MongoDB Database & Collection Metadata Script
 ### Prerequisites 
-- `mongsh` Shell 
+- `mongosh` Shell 
 - Credentials with atleast **read acess** to all databases.
 
 ### Description
